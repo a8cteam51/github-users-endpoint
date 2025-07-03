@@ -1,0 +1,113 @@
+---
+description: WordPress coding standards for PHP
+globs: *.php
+---
+- When embedding multi-line PHP snippets within an HTML block, the PHP open and close tags must be on a line by themselves.
+- Never use shorthand PHP start tags. Always use full PHP tags.
+- Use single and double quotes when appropriate. If you’re not evaluating anything in the string, use single quotes.
+- Use lowercase letters in variable, action/filter, and function names (never camelCase).
+- Use spaces, not tabs, for indentation. Each level of indentation is four spaces.
+- Use Yoda conditions (`if ( 5 === $var )`) to prevent accidental assignment.
+- Use strict comparison operators (`===`, `!==`) instead of loose ones (`==`, `!=`).
+- Function and class names must be in lowercase and use underscores (`my_function_name`).
+- Class file names must be lowercase with hyphens (`class-my-class.php`).
+- Class names must use PascalCase (`My_Class`).
+- Constants must be in all uppercase with underscores (`MY_CONSTANT`).
+- Use spaces around operators (`$var = 5 + 3;`).
+- Place a single space after commas in arrays and function calls.
+- No trailing spaces at the end of lines.
+- Arrays must use the short syntax (`[]` instead of `array()`).
+- Opening braces `{` go on the same line as the declaration.
+- Closing braces `}` must be on a new line.
+- Use `elseif`, not `else if`.
+- Do not include a closing PHP tag `?>` in pure PHP files.
+- Function calls must not have spaces between the function name and parentheses (`my_function($arg1, $arg2);`).
+- Use `isset()` and `empty()` to check variables before use.
+- Use `wp_enqueue_script()` and `wp_enqueue_style()` instead of hardcoded `<script>` and `<link>` tags.
+- Escape all output using `esc_html()`, `esc_attr()`, `esc_url()`, etc.
+- Sanitize all input using `sanitize_text_field()`, `sanitize_email()`, etc.
+- Use `wp_safe_redirect()` instead of `header('Location: ...');`.
+- Use `wp_nonce_field()` and `check_admin_referer()` for form security.
+- Always use `get_template_directory()` or `get_stylesheet_directory()` for including files instead of hardcoding paths.
+- Use `get_option()` and `update_option()` for storing/retrieving options.
+- Do not use `extract()` due to security concerns.
+- Prefix function names, class names, and global variables to avoid conflicts.
+- Use `esc_html__()`, `esc_attr__()`, `esc_html_e()`, and `esc_attr_e()` for escaping translatable strings.
+- Do not use `wp_die()` for fatal errors; use `wp_send_json_error()`, `wp_redirect()`, or `wp_error()`.
+- Always use `add_action()` and `add_filter()` with namespaced callbacks when possible.
+- Do not use `query_posts()`. Modify queries using `WP_Query` or `pre_get_posts`.
+- Use `wp_mail()` instead of `mail()`.
+- Do not use `eval()`.
+- Do not use direct database queries; use `$wpdb` with prepared statements.
+- Use `register_post_type()` for custom post types instead of modifying core tables.
+- Use `register_taxonomy()` for custom taxonomies.
+- Use `wp_verify_nonce()` before processing form submissions.
+- Use `is_admin()` only to check if in admin; for AJAX requests, also check `wp_doing_ajax()`.
+- Do not use `global $post;` inside loops without calling `wp_reset_postdata()` afterward.
+- Always return values in filters instead of echoing.
+- Use `get_the_ID()` instead of `$post->ID` where possible.
+- Use `wp_enqueue_scripts` hook for enqueuing styles and scripts.
+- Always use `wp_json_encode()` instead of `json_encode()`.
+- Use `update_user_meta()`, `get_user_meta()`, and `delete_user_meta()` instead of direct database queries.
+- Use `get_post_meta()`, `update_post_meta()`, and `delete_post_meta()` instead of direct database queries.
+- Use `wp_upload_dir()` for upload paths instead of hardcoded directories.
+- Use `wp_localize_script()` for passing PHP data to JavaScript.
+- Do not hardcode URLs; use `home_url()`, `site_url()`, `admin_url()`, `network_site_url()`, etc.
+- Use `sanitize_key()` for sanitizing option keys.
+- Do not disable WordPress auto-updates or core updates without a valid reason.
+- Use `wp_add_inline_style()` instead of inline `<style>` tags.
+- Use `wp_add_inline_script()` instead of inline `<script>` tags.
+- Use `wp_kses_post()` to sanitize HTML input safely.
+- Use `wp_schedule_event()` for scheduled tasks instead of `cron`.
+- Always return `WP_Error` objects on failures instead of custom error strings.
+- Use `require[_once]` instead of `include[_once]` for unconditional file inclusion.
+- Do not use parentheses with `require` or `include`.
+- Class, trait, interface, and enum names should use capitalized words separated by underscores (`My_Class`, `Mailer_Interface`).
+- Always use curly braces `{}` for control structures, even for single-line blocks.
+- Do not use short ternary operators (`??` or `?:`).
+- Do not use `@` error suppression.
+- Pre-increment (`++$i`) and pre-decrement (`--$i`) should be used instead of post-increment (`$i++`) and post-decrement (`$i--`) when they are standalone statements.
+- Always use the long array syntax (`array()`) instead of short syntax (`[]`).
+- Use `switch` statements with properly indented `case` blocks.
+- Always include a comment when intentionally falling through in a `switch` case (`// no break`).
+- Use `isset()` instead of `empty()` for checking variable existence when possible.
+- Do not use `goto`.
+- Use `preg_replace_callback()` instead of `preg_replace()` with the `/e` modifier.
+- Do not use `eval()` or `create_function()`.
+- Closures should not be used as filter or action callbacks.
+- Do not use `extract()`, as it makes code harder to debug and read.
+- Always declare visibility (`public`, `protected`, `private`) for class properties and methods.
+- When using multiple modifiers for a class property, use the order: `visibility`, `static/readonly`, `type`.
+- When using multiple modifiers for a method, use the order: `abstract/final`, `visibility`, `static`.
+- Always use parentheses when instantiating a new object (`$obj = new ClassName();`).
+- Namespace declarations should be followed by exactly one blank line.
+- Do not use curly brace syntax for `namespace` declarations.
+- Use fully-qualified class names in `use` statements.
+- Do not use leading backslashes in `use` statements.
+- Import `use` statements should be grouped by type: first classes, then functions, then constants.
+- Type casts must be lowercase (`(int)`, `(bool)`, `(float)`, `(string)`, `(array)`, `(object)`, `(unset)`).
+- `declare(strict_types=1);` should not be used in WordPress core or plugins.
+- The `static` return type should not be used until PHP 8.0+ is the minimum required version.
+- Do not mix union (`|`) and intersection (`&`) types before PHP 8.2.
+- Magic constants like `__DIR__` and `__CLASS__` should be written in uppercase.
+- Use `class` keyword in lowercase when resolving class names (`MyClass::class`).
+- Namespace names should be in PascalCase (`Vendor\Project\Module`).
+- Do not use anonymous classes in hooks or filters.
+- Use self-explanatory string values instead of `true/false` flags in function arguments.
+- Function assignments inside conditionals (`if ($data = get_data()) {}`) must be avoided.
+- Use `wpdb::prepare()` for SQL queries instead of manual escaping.
+- Functions that update the database should not expect pre-escaped input.
+- `wpdb::prepare()` should be used with `%d`, `%f`, `%s`, and `%i` placeholders.
+- Always use `sprintf()` when translating strings that contain placeholders.
+- Always use `return` instead of `echo` in filter functions.
+- Do not concatenate SQL queries; use `wpdb::prepare()`.
+- Use `wp_send_json_success()` and `wp_send_json_error()` for JSON responses.
+- Use `esc_sql()` only when absolutely necessary.
+- Use `wp_parse_args()` for handling function arguments.
+- Do not use `global $wpdb;` inside loops unless necessary.
+- Do not use `global $post;` inside loops without calling `wp_reset_postdata()`.
+- Use `wp_die()` only for terminating scripts with a message.
+- Always use `wp_safe_redirect()` for redirects.
+- Use `wp_kses()` when outputting user-generated HTML.
+- Do not disable WordPress auto-updates unless absolutely necessary.
+

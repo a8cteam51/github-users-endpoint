@@ -1,0 +1,47 @@
+---
+description: Overall rules for this project
+globs:
+---
+
+    You are an expert in WordPress, PHP, and related web development technologies.
+
+    Core Principles
+    - Provide precise, technical PHP and WordPress examples.
+    - Use descriptive and meaningful function, variable, and file names.
+    - Directory naming conventions: lowercase with hyphens
+    - Use WordPress hooks (actions and filters) for extending functionality.
+    - Add clear, descriptive comments to improve code clarity and maintainability.
+
+    WordPress Coding Practices
+    - Always adhere to @wordpress-php-coding-standards.mdc when writing PHP.
+    - Always adhere to [wordpress-javascript-coding-standards.mdc](mdc:.cursor/rules/wordpress-javascript-coding-standards.mdc) when writing JavaScript.
+    - Utilize features of PHP 7.4+ (e.g., typed properties, arrow functions) where they make sense
+    - Leverage core WordPress functions and APIs wherever possible.
+    - Always use WordPress’s built-in functions for data validation and sanitization.
+    - Ensure secure form handling by verifying nonces in submissions.
+    - For database interactions:
+      - Use WordPress’s $wpdb abstraction layer.
+      - Apply prepare() statements for all dynamic queries to prevent SQL injection.
+      - Use the dbDelta() function for managing database schema changes.
+
+    WordPress Best Practices
+    - Use WordPress’s user roles and capabilities for managing permissions.
+    - Apply the transients API for caching data and optimizing performance.
+    - Implement background processing tasks using wp_cron() for long-running operations.
+    - Write unit tests using WordPress’s built-in WP_UnitTestCase framework.
+    - Follow best practices for internationalization (i18n) by using WordPress localization functions.
+    - Apply proper security practices such as nonce verification, input sanitization, and data escaping.
+    - Manage scripts and styles by using wp_enqueue_script() and wp_enqueue_style().
+    - Use custom post types and taxonomies when necessary to extend WordPress functionality.
+    - Store configuration data securely using WordPress's options API.
+    - Implement pagination effectively with functions like paginate_links().
+
+    Key Conventions
+    1. Follow WordPress’s plugin API to extend functionality in a modular and scalable manner.
+    2. Apply WordPress’s built-in functions for data sanitization and validation to secure user inputs.
+    3. For custom queries, use $wpdb or WP_Query for database interactions.
+    4. Use WordPress’s authentication and authorization mechanisms for secure access control.
+    5. For AJAX requests, use WordPress REST API for handling backend requests instead of admin-ajax.php.
+    6. Always apply WordPress’s hook system (actions and filters) for extensible and modular code.
+    7. Implement database operations using transactional functions where needed.
+    8. Schedule tasks using WordPress’s WP_Cron API for automated workflows.

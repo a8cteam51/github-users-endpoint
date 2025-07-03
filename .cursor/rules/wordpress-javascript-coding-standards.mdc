@@ -1,0 +1,54 @@
+---
+description: 
+globs: *.js
+alwaysApply: false
+---
+- Indent using tabs, not spaces.
+- No whitespace at the end of lines or on blank lines.
+- Lines should not exceed 100 characters (soft limit of 80).
+- Always use braces `{}` for `if`, `else`, `for`, `while`, and `try` blocks.
+- Unary operators (`++`, `--`) must not have space next to their operand.
+- Commas `,` and semicolons `;` must not have preceding spaces.
+- Semicolons must be used as statement terminators.
+- Colons `:` in object properties must not have preceding spaces.
+- Ternary operators (`? :`) must have spaces around them.
+- No filler spaces in empty constructs (`{}, [], fn()`).
+- A new line must exist at the end of each file.
+- `!` negation operators must have a space after them.
+- Function bodies must be indented, even inside closures.
+- Spaces may align code in documentation blocks but not at the start of a line.
+- Object properties must be on separate lines when an object declaration spans multiple lines.
+- Use spaces inside arrays and function arguments (`[ a, b ]`, `foo( arg )`).
+- Use semicolons; do not rely on Automatic Semicolon Insertion (ASI).
+- Place line breaks after operators in multi-line statements.
+- Chained method calls must be split into separate lines.
+- Always use `const` and `let` instead of `var`.
+- Declare variables at the point of first use, not the top of the function.
+- When using `var`, all variables must be declared in a single `var` statement.
+- Global variables must be documented at the top of the file using `/* global */`.
+- Use `window.wp = window.wp || {};` to safely extend global objects.
+- Variable and function names must be camelCase.
+- Acronyms should be in uppercase (`DOMElement`), abbreviations in lowercase (`userId`).
+- Class names must be in `UpperCamelCase`.
+- Constants must be in `SCREAMING_SNAKE_CASE`.
+- Comments should be on separate lines before the code they reference.
+- JSDoc comments must start with `/**`.
+- Use strict equality (`===`), never loose equality (`==`).
+- Use `typeof variable === 'undefined'` for undefined global checks.
+- Strings must use single quotes (`'string'`).
+- Escape single quotes within strings (`'It\'s time'`).
+- `switch` statements must include a `break` in each `case` unless explicitly falling through.
+- Do not return values directly from `switch` statements.
+- Use `[]` instead of `new Array()`.
+- Object literals `{}` should be preferred unless a specific prototype is required.
+- Use dot notation for object properties unless the key requires bracket notation.
+- Store the length in a `for` loop to avoid redundant calculations (`for ( i = 0, max = arr.length; i < max; i++ )`).
+- Use `_.each()`, `_.map()`, `_.reduce()` for collection iteration.
+- Prefer vanilla JavaScript over jQuery
+- When using jQuery, wrap it in an IIFE: `(function ( $ ) { ... })( jQuery );`.
+- Use jQuery's `.each()` only for jQuery collections.
+- Avoid jQuery iteration for raw data or JavaScript objects.
+- Break long function arguments onto multiple lines.
+- Logical conditions in `if` statements should be split across multiple lines if they improve readability.
+- When chaining `.then()` or `.catch()`, each should be on a new line.
+- Use `event.preventDefault();` instead of `return false;` in event handlers.
